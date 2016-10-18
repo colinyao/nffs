@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="src/css/base.css" />
+    <!--[if lte IE 9]>
+    <script src="bootstrap/js/respond.min.js"></script>
+    <script src="bootstrap/js/html5.js"></script>
+    <![endif]-->
+        <script>
+    wh = document.documentElement.clientHeight;
+    ww = document.documentElement.clientWidth;
+    var scale = ww / wh;
+    var scaleX = ww / 640;
+    var scaleY = wh / 1008;
+    if (ww < 640) {
+        if (scaleX * 30 <= 12) {
+            document.getElementsByTagName("html")[0].style.fontSize = 12 + "px";
+        } else {
+            document.getElementsByTagName("html")[0].style.fontSize = scaleX * 30 + "px";
+        }
+    }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.30/angular.js"></script>
+    <script src='//cdn.bootcss.com/angular-ui-router/0.3.1/angular-ui-router.min.js'></script>
+    <script src="src/js/lib/ocLazyLoad.min.js"></script>
+    <script src="src/js/router/router.js"></script>
+    <script src="src/js/main.js"></script>
+    <script src="src/js/controllers/navCtrl.js"></script>
+</head>
+
+<body>
+    <div class="wrapper" ng-app="myApp">
+        <div ng-include="'/templates/header.html'"></div>
+        <div ui-view=""></div>
+        <div ng-include="'/templates/footer.html'"></div>
+    </div>
+</body>
+
+</html>

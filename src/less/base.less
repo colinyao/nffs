@@ -1,0 +1,273 @@
+html,
+body,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+img,
+div,
+section,
+input,
+textarea,
+dl,
+dt,
+dd,
+button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+html {
+    font-family: "微软雅黑";
+    color: #000;
+}
+
+a,
+img,
+button,
+input,
+textarea {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0)
+}
+
+html,
+body,
+html {
+    font-size: 30px;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #000
+}
+
+a:active {
+    color: #000
+}
+
+a:link {
+    color: #000
+}
+
+a:visited {
+    color: #000
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+.i-block {
+    display: inline-block;
+}
+
+.center {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    display: box;
+    box-align: center;
+    box-pack: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+}
+
+.h-center {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    display: box;
+    box-align: center;
+    box-pack: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+}
+
+.v-center {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    display: box;
+    box-align: center;
+    box-pack: center;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+    -webkit-flex-flow: column;
+    flex-flow: column;
+}
+
+.hc-average {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: justify;
+    display: box;
+    box-align: center;
+    box-pack: justify;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: space-around;
+}
+
+.ht-average {
+    display: -webkit-box;
+    -webkit-box-align: start;
+    -webkit-box-pack: justify;
+    display: box;
+    box-align: start;
+    box-pack: justify;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    display: -webkit-flex;
+    -webkit-align-items: flex-start;
+    -webkit-justify-content: space-around;
+}
+
+.tc {
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.invisible {
+    opacity: 0 !important;
+}
+
+.rel {
+    position: relative;
+}
+
+.pos {
+    position: absolute;
+}
+
+.clearfix {}
+
+.clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.no-m {
+    margin: 0!important
+}
+/*less*/
+.transform(@css){
+	-webkit-transform:@css;
+	-moz-transform:@css;
+	-o-transform:@css;
+	-ms-transform:@css;
+	transform:@css;
+}
+.transition(@css){
+	-webkit-transition:@css;
+	-moz-transition:@css;
+	-o-transition:@css;
+	-ms-transition:@css;
+	transition:@css;
+}
+/*end*/
+.wrapper {
+    min-height: 100%
+}
+
+.navbar {
+    padding: 40px 80px;
+    height: 160px
+}
+
+.navbar-brand {
+    display: inline-block;
+    float: left;
+    width: 250px;
+}
+
+.navbar-fixed-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%
+}
+
+.navbar-right {
+    float: right
+}
+
+.nav {
+    line-height: 80px
+}
+
+.nav li {
+    float: left;
+    font-size: 20px;
+    margin-right: 40px;
+    z-index:9;
+}
+
+.nav li a {
+    display: inline-block;
+    position: relative;
+    span {
+        display: inline-block;
+        .transition(all 0.5s)
+        &.eng {
+            font-family: Helvetica
+        }
+        &.chinese {
+            position: absolute;
+            z-index:-1;
+            top: 0;
+            left: 0;
+            opacity:0;
+            white-space: nowrap;
+            .transform(rotateY(-180deg))
+        }
+    }
+
+}
+.nav li.active{
+	.eng{
+		opacity:0;
+        .transform(rotateY(180deg))
+	}
+	.chinese{
+		opacity:1;
+        .transform(rotateY(0))
+	}
+}
