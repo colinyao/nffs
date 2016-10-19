@@ -1,0 +1,67 @@
+/*less*/
+/*end*/
+@media screen and (max-width: 1200px) {
+  .navbar {
+    padding: 20px 4%;
+  }
+  .nav li {
+    margin-right: 20px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .collapse {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    -webkit-transform: translateY(-100%);
+    -moz-transform: translateY(-100%);
+    -o-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+  .collapse-active {
+    z-index: 9;
+    opacity: 1;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -o-transform: none;
+    -ms-transform: none;
+    transform: none;
+  }
+  .collapse-btn {
+    display: block;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 30px;
+    right: 4%;
+    background: #000;
+    border: none;
+    z-index: 9;
+  }
+  .navbar-right {
+    float: none;
+  }
+  .nav li {
+    float: none;
+    background: rgba(87, 181, 245, 0.8);
+    text-align: center;
+    margin: 0 0 1px 0;
+    line-height: 40px;
+  }
+  .nav li span {
+    width: 115px;
+    text-align: center;
+  }
+  .navbar-brand {
+    width: 200px;
+  }
+}

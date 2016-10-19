@@ -7,6 +7,6 @@
         <li><a class="flex-next" href="javascript:;">Next</a></li>
     </ul>
     <ol id="bannerCtrl" class="flex-control-nav flex-control-paging">
-        <li ng-repeat="item in banners track by $index"><a>{{$index}}</a></li>
+        <li ng-repeat="item in banners track by $index" banner-init><a>{{$index}}</a></li>
     </ol>
 </div>

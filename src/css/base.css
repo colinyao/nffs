@@ -169,8 +169,7 @@ img {
   min-height: 100%;
 }
 .navbar {
-  padding: 40px 80px;
-  height: 160px;
+  padding: 40px 4%;
 }
 .navbar-brand {
   display: inline-block;
@@ -196,11 +195,8 @@ img {
   margin-right: 40px;
   z-index: 9;
 }
-.nav li {
-  display: inline-block;
-  position: relative;
-}
 .nav li a {
+  position: relative;
   display: inline-block;
 }
 .nav li span {
@@ -242,6 +238,7 @@ img {
   -o-transform: rotateY(0);
   -ms-transform: rotateY(0);
   transform: rotateY(0);
+  z-index: 1;
 }
 /*slide*/
 .flexslider {
@@ -326,5 +323,8 @@ img {
 .flexslider .slides a img {
   width: 100%;
   display: block;
+}
+.collapse-btn {
+  display: none;
 }
 /*end*/

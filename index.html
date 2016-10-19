@@ -8,11 +8,12 @@
     <meta CacheControl = "no-cache" >
     <title>Document</title>
     <link rel="stylesheet" href="src/css/base.css" />
+    <link rel="stylesheet" href="src/css/response.css"/>
     <!--[if lte IE 9]>
     <script src="bootstrap/js/respond.min.js"></script>
     <script src="bootstrap/js/html5.js"></script>
     <![endif]-->
-        <script>
+    <script>
     wh = document.documentElement.clientHeight;
     ww = document.documentElement.clientWidth;
     var scale = ww / wh;
@@ -26,8 +27,8 @@
         }
     }
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.30/angular.js"></script>
-    <script src='//cdn.bootcss.com/angular-ui-router/0.3.1/angular-ui-router.min.js'></script>
+    <script src="src/js/lib/angular.js"></script>
+    <script src='src/js/lib/angular-ui-router.min.js'></script>
     <script src="src/js/lib/ocLazyLoad.min.js"></script>
     <script src="src/js/lib/jquery-1.7.2.min.js"></script>
     <script src="src/js/router/router.js"></script>
@@ -36,8 +37,8 @@
  
 </head>
 
-<body>
-    <div class="wrapper" ng-app="myApp">
+<body ng-app="myApp">
+    <div class="wrapper"  nav-scroll>
         <div ng-include="'/templates/header.html'"></div>
         <div ui-view=""></div>
         <div ng-include="'/templates/footer.html'"></div>

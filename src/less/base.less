@@ -209,8 +209,7 @@ img {
 }
 
 .navbar {
-    padding: 40px 80px;
-    height: 160px
+    padding: 40px 4%;
 }
 
 .navbar-brand {
@@ -243,9 +242,7 @@ img {
 }
 
 .nav li {
-    display: inline-block;
-    position: relative;
-    a{display:inline-block;}
+    a{position: relative;display:inline-block;}
     span {
         display: inline-block;
         .transition(all 0.5s);
@@ -271,7 +268,8 @@ img {
 	}
 	.chinese{
 		opacity:1;
-        .transform(rotateY(0))
+        .transform(rotateY(0));
+        z-index:1;
 	}
 }
 /*slide*/
@@ -285,7 +283,7 @@ img {
 
     .flexslider .slides li {
         .transition(all 1s);
-        a{display: block;}
+        a{display: block}
     }
     
     .flex-direction-nav a {
@@ -364,5 +362,5 @@ img {
         width: 100%;
         display: block;
     }
-
+    .collapse-btn{display: none}
 /*end*/

@@ -99,7 +99,6 @@ $(function($, window, document, undefined) {
         function play(index, mode) {
             slidesWrapper.stop(true, true);
             slides.stop(true, true);
-            console.log(index)
             mode == 'slide' ? (function() {
                 if (index > currentIndex) {
                     slidesWrapper.animate({
