@@ -1,0 +1,12 @@
+<div id="banner_tabs" class="flexslider">
+    <ul class="slides">
+        <li ng-repeat="item in banners track by $index"><a><img alt=""  src="{{item.imgUrl}}"></a></li>
+    </ul>
+    <ul class="flex-direction-nav">
+        <li><a class="flex-prev" href="javascript:;">Previous</a></li>
+        <li><a class="flex-next" href="javascript:;">Next</a></li>
+    </ul>
+    <ol id="bannerCtrl" class="flex-control-nav flex-control-paging">
+        <li ng-repeat="item in banners track by $index"><a>{{$index}}</a></li>
+    </ol>
+</div>

@@ -1,3 +1,4 @@
+<script src="src/js/controllers/navCtrl.js"></script>
 <div class="header navbar-fixed-top" ng-controller="navCtrl">
     <div class="navbar clearfix" role="navigation"> 
         <div class="navbar-header fl">      
@@ -6,12 +7,7 @@
         <!-- 屏幕宽度小于768px时，div.navbar-responsive-collapse容器里的内容都会隐藏，显示icon-bar图标，当点击icon-bar图标时，再展开。屏幕大于768px时，默认显示。 -->
         <div class="collapse clearfix">
             <ul class="nav navbar-right clearfix">
-                <li ng-mouseenter="mouseEnter($event)"><a href="##"><span class="eng">ABOUT</span><span class="chinese">关于风尚</span></a></li>
-                <li><a href="##"><span class="eng">WORKS</span><span class="chinese">风尚案例</span></a></li>
-                <li><a href="##"><span class="eng">NEWS</span><span class="chinese">风尚动态</span></a></li>
-                <li><a href="##"><span class="eng">OBSERVED</span><span class="chinese">风尚观察</span></a></li>
-                <li><a href="##"><span class="eng">AT MASTER</span><span class="chinese">艾特大师</span></a></li>
-                <li class="no-m"><a href="##"><span class="eng">CONTACT</span><span class="chinese">联系风尚</span></a></li>
+                <li ng-repeat="item in nav track by $index" nav-hover><a ui-sref="{{item.link}}"><span class="eng">{{item.eng}}</span><span class="chinese">{{item.chinese}}</span></a></li>
             </ul>
         </div>
     </div>
