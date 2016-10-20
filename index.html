@@ -33,16 +33,17 @@
     <script src="src/js/lib/jquery-1.7.2.min.js"></script>
     <script src="src/js/router/router.js"></script>
     <script src="src/js/controllers/navCtrl.js"></script>
-    <script src="src/js/main.js"></script>
- 
+    <script src="src/js/services/comService.js"></script>
+    <script src="src/js/directive/comDirective.js"></script>
 </head>
 
-<body ng-app="myApp">
+<body ng-app="myApp" id="body">
     <div class="wrapper"  nav-scroll>
         <div ng-include="'/templates/header.html'"></div>
         <div ui-view=""></div>
         <div ng-include="'/templates/footer.html'"></div>
     </div>
+        <script src="src/js/main.js"></script>
 </body>
 
 </html>

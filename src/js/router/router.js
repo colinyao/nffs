@@ -22,6 +22,19 @@
        .state('works', {
          url: '/works',
          templateUrl: '/views/works.html',
+         controller: 'worksCtrl',
+         resolve: {
+           loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+             // you can lazy load files for an existing module
+             return $ocLazyLoad.load([
+               'src/js/controllers/worksCtrl.js'
+             ]).then(function() {
+               // inject the lazy loaded service
+
+             });
+
+           }]
+         }
        })
        .state('news', {
          url: '/news',

@@ -7,7 +7,7 @@
         <!-- 屏幕宽度小于768px时，div.navbar-responsive-collapse容器里的内容都会隐藏，显示icon-bar图标，当点击icon-bar图标时，再展开。屏幕大于768px时，默认显示。 -->
         <div class="collapse" ng-class="{'collapse-active':isCollapse}" >
             <ul class="nav navbar-right clearfix">
-                <li ng-repeat="item in nav track by $index" nav-hover><a ui-sref="{{item.link}}"><span class="eng">{{item.eng}}</span><span class="chinese">{{item.chinese}}</span></a></li>
+                <li ng-repeat="item in nav track by $index" active-hover><a ui-sref="{{item.link}}"><span class="eng">{{item.eng}}</span><span class="chinese">{{item.chinese}}</span></a></li>
             </ul>
         </div>
         <button class="responsive-ele collapse-btn"  ng-click="collapse()"></button>
