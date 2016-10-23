@@ -38,7 +38,20 @@
        })
        .state('news', {
          url: '/news',
-         templateUrl: '/views/news.html'
+         templateUrl: '/views/news.html',
+          controller: 'newsCtrl',
+         resolve: {
+           loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+             // you can lazy load files for an existing module
+             return $ocLazyLoad.load([
+               'src/js/controllers/newsCtrl.js'
+             ]).then(function() {
+               // inject the lazy loaded service
+
+             });
+
+           }]
+         }       
        })
        .state('atmaster', {
          url: '/atmaster',

@@ -1,11 +1,12 @@
-<div class="works-banner"><img src="../src/images/works-banner.png"></div>
-<div class="content">
-	<div class="news-container" ng-bind-html="newsData | trustHtml">
-	
+<div class="content mt150">
+ <div class="headline"><img src="../src/images/works-head.png"></div>
+      <div class="clearfix">
+	<div class="news-container fl" ng-bind-html="newsData | trustHtml">
 	</div>
-	<div class="news-list">
+	<div class="news-list fr">
 		<ul>
-                    <li ng-repeat="item in newsList" ></li>
+                    <li ng-repeat="item in newsList" news-change ><span>{{item.title}}</span></li>
 		</ul>
+	</div>
 	</div>
 </div>
