@@ -54,7 +54,7 @@ directive('activeHover', function() {
 	return {
 		restrict: "A",
 		link: function(scope, ele, attr) {
-			if (scope.$last && scope.works == undefined) {
+			if (scope.$last && scope.nav != undefined) {
 				ele.addClass('no-m');
 			}
 			ele.on('mouseenter', function() {

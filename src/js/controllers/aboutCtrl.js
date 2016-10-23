@@ -6,6 +6,13 @@ controller('aboutCtrl', ['$scope', function($scope) {
 			imgUrl: 'src/images/banner.png'
 		}, {
 			imgUrl: 'src/images/banner.png'
+		}];
+		$scope.filters=[{
+			imgUrl: 'src/images/filter1.png'
+		},{
+			imgUrl: 'src/images/filter1.png'
+		},{
+			imgUrl: 'src/images/filter1.png'
 		}]
 
 	}])

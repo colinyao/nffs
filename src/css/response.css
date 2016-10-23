@@ -81,20 +81,6 @@
   .mt90 {
     margin-top: 40px;
   }
-  .close-panel {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 40px;
-    width: 100%;
-    opacity: 0.7;
-    background: #000;
-    z-index: 9;
-  }
-  .modal-container .close {
-    top: 0;
-    right: 20px;
-  }
   .work-modal {
     padding: 0;
   }
