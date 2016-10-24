@@ -41,7 +41,7 @@ textarea {
 html,
 body,
 html {
-    font-size: 30px;
+    font-size: 24px;
 }
 
 li {
@@ -72,6 +72,7 @@ img {
     display: block;
     width: 100%;
     border: none;
+    max-width:100%;
 }
 
 .i-block {
@@ -83,11 +84,11 @@ img {
 }
 
 .mt20 {
-    margin-top: 20px
+    margin-top: 0.67rem
 }
 
 .mt30 {
-    margin-top: 30px
+    margin-top: 1rem
 }
 
 .mb10 {
@@ -99,7 +100,7 @@ img {
 }
 
 .mb30 {
-    margin-top: 30px
+    margin-top: 1rem
 }
 
 .ml10 {
@@ -107,11 +108,11 @@ img {
 }
 
 .ml20 {
-    margin-top: 20px
+    margin-top: 0.67rem
 }
 
 .ml30 {
-    margin-top: 30px
+    margin-top: 1rem
 }
 
 .mr10 {
@@ -119,11 +120,11 @@ img {
 }
 
 .mr20 {
-    margin-top: 20px
+    margin-top: 0.67rem
 }
 
 .mr30 {
-    margin-top: 30px
+    margin-top: 1rem
 }
 .fl{float:left}
 .fr{float:right}
@@ -209,7 +210,9 @@ img {
 .tc {
     text-align: center;
 }
-
+.tr {
+    text-align: right;
+}
 .hidden {
     display: none !important;
 }
@@ -444,7 +447,8 @@ img {
 .content {
     max-width: 1540px;
     margin: 0 auto;
-    padding: 0 50px;
+    padding-left:50px;
+    padding-right:50px;
 }
 
 .headline {
@@ -627,9 +631,9 @@ img {
         width: 100%;       
         opacity:0.7;
         background: #000;
-        z-index:9
+        z-index:11
     }
-.modal-container .close {
+    .close {
     position: fixed;
     top:0;right:20px;
     width: 40px;
@@ -640,8 +644,44 @@ img {
 }
 /*end*/
 /*news*/
-.mt150{margin-top:150px}
-.news-container{width:70%}
-.news-list{width:30%}
-.news-list ul li{font-size:14px;white-space:nowrap;overflow: hidden;text-overflow:ellipsis;}
+.mt300{margin-top:300/24rem}
+.news-container{width:70%;min-height: 1200px;padding-top:50px;float:left}
+.news-list{position:relative;float:right;width:30%;border-top:10px solid #000;overflow: auto}
+.news-list-title{font-size:28/24rem;font-weight: normal;white-space:nowrap;overflow: hidden;text-overflow:ellipsis;}
+.news-list-time{font-size:12px;line-height: 50/24rem;border-bottom:3px solid #888888;}
+.news-list-des{font-size:12px;line-height:14px;margin-top:20/24rem;max-height:72px;overflow: hidden;text-overflow:ellipsis}
+.news-list ul li{margin-top:24/24rem;cursor:pointer}
+.news-list ul{padding-bottom:50px;margin-top:50px}
+/*end*/
+.diy-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+.diy-scrollbar::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+    background-color: rgba(0,0,0,.2);
+}
+.diy-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+/*atmaster*/
+.f24{font-size:30/24rem;line-height: 30/24rem}
+.tab-menu{margin-top:75/24rem;}
+.tab-menu ul li{float:left;width:25%;.f24;cursor:pointer}
+.tab-menu ul li span{display: inline-block;padding-bottom:30/24rem;}
+.tab-menu ul li.active span{
+	border-bottom:2px solid #888
+}
+.tab-content{
+	display:none
+}
+.tab-content.active{
+	display: block
+}
+.fs-title{margin-top:50/24rem;}
+.fs-title h3{display:inline-block;font-size:30/24rem;line-height: 30/24rem;padding-bottom:30/24rem;border-bottom:2px solid #888}
+.fs-culture-content{margin-left:-2%}
+.fs-culture-item{width:31.3%;float:left;margin-left:2%}
+.fs-culture-item dt{padding:30/24rem 0;border-bottom:1px solid #888;.f24;}
+.fs-culture-item dd{margin-top:20/24rem;max-height:650px}
+.fs-prod-item{float:left;width:50%;margin:1rem auto;padding-right:3%;font-size:16/24rem}
 /*end*/

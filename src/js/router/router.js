@@ -39,7 +39,7 @@
        .state('news', {
          url: '/news',
          templateUrl: '/views/news.html',
-          controller: 'newsCtrl',
+         controller: 'newsCtrl',
          resolve: {
            loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
              // you can lazy load files for an existing module
@@ -51,11 +51,24 @@
              });
 
            }]
-         }       
+         }
        })
        .state('atmaster', {
          url: '/atmaster',
          templateUrl: '/views/atmaster.html',
+         controller: 'atmasterCtrl',
+         resolve: {
+           loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+             // you can lazy load files for an existing module
+             return $ocLazyLoad.load([
+               'src/js/controllers/atmasterCtrl.js'
+             ]).then(function() {
+               // inject the lazy loaded service
+
+             });
+
+           }]
+         }
        })
        .state('observed', {
          url: '/observed',

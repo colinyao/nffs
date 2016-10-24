@@ -36,6 +36,7 @@ directive('navScroll', function() {
 		link: function(scope, ele, attr) {
 
 			$(document).on('scroll', function() {
+				scope.$broadcast('isScroll', true);
 				var wrapperHieght = $('.wrapper').outerHeight(true),
 					clientHeight = $(window).height(),
 					scrollTop = $(document).scrollTop();
@@ -47,6 +48,28 @@ directive('navScroll', function() {
 				scrollTop + clientHeight > wrapperHieght - 100 ? scope.$broadcast('isLoadMore', true) : scope.$broadcast('isLoadMore', false);
 			})
 
+		}
+	}
+}).
+directive('windowResize', function() {
+	return {
+		restrict: 'A',
+		link: function(scope, ele, attr) {
+			var ww, wh;
+			window.onresize = function() {
+				isM();
+				scope.$broadcast('isResize', {
+					ww: ww,
+					wh: wh
+				})
+
+			}
+
+			function isM() {
+				ww = window.document.body.clientWidth; //innerWidth包含了滚动条
+				wh = window.innerHeight;
+				ww < 768 ? scope.$broadcast('isM', true) : scope.$broadcast('isM', false);
+			}
 		}
 	}
 }).

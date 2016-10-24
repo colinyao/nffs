@@ -1,11 +1,12 @@
-<div class="content mt150">
+<div class="content mt300">
  <div class="headline"><img src="../src/images/works-head.png"></div>
       <div class="clearfix">
-	<div class="news-container fl" ng-bind-html="newsData | trustHtml">
+    <div class='close-panel hidden'><div class='close' ng-click='newsContainerClose()'></div></div>
+	<div class="news-container" ng-bind-html="newsData | trustHtml">
 	</div>
-	<div class="news-list fr">
+	<div class="news-list diy-scrollbar" fix-top>
 		<ul>
-                    <li ng-repeat="item in newsList" news-change ><span>{{item.title}}</span></li>
+            <li ng-repeat="item in newsList" news-change ><h3 class="news-list-title">{{item.title}}</h3><p class="news-list-time">{{item.time}}</p><p class="news-list-des">{{item.des}}</p></li>
 		</ul>
 	</div>
 	</div>

@@ -13,20 +13,6 @@
     <script src="bootstrap/js/respond.min.js"></script>
     <script src="bootstrap/js/html5.js"></script>
     <![endif]-->
-    <script>
-    wh = document.documentElement.clientHeight;
-    ww = document.documentElement.clientWidth;
-    var scale = ww / wh;
-    var scaleX = ww / 640;
-    var scaleY = wh / 1008;
-    if (ww < 640) {
-        if (scaleX * 30 <= 12) {
-            document.getElementsByTagName("html")[0].style.fontSize = 12 + "px";
-        } else {
-            document.getElementsByTagName("html")[0].style.fontSize = scaleX * 30 + "px";
-        }
-    }
-    </script>
     <script src="src/js/lib/angular.js"></script>
     <script src='src/js/lib/angular-ui-router.min.js'></script>
     <script src="src/js/lib/ocLazyLoad.min.js"></script>
@@ -38,7 +24,7 @@
 </head>
 
 <body ng-app="myApp" id="body">
-    <div class="wrapper"  nav-scroll>
+    <div class="wrapper"  nav-scroll window-resize>
         <div ng-include="'/templates/header.html'"></div>
         <div ui-view=""></div>
         <div ng-include="'/templates/footer.html'"></div>
