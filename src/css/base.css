@@ -389,7 +389,7 @@ img {
   border-bottom: 3px solid #888888;
 }
 .headline img {
-  width: 524px;
+  width: 550px;
 }
 .mt90 {
   margin-top: 90px;
@@ -403,7 +403,8 @@ img {
   margin-left: 3%;
   margin-bottom: 30px;
 }
-.works-img {
+.works-img,
+.fs-team-img {
   display: block;
   position: relative;
   overflow: hidden;
@@ -419,30 +420,37 @@ img {
   background: #000;
   opacity: 0.6;
   filter: alpha(opacity=60);
+  -webkit-transform: translateY(101%);
+  -moz-transform: translateY(101%);
+  -o-transform: translateY(101%);
+  -ms-transform: translateY(101%);
+  transform: translateY(101%);
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   -ms-transition: all 0.5s;
   transition: all 0.5s;
 }
-.works-des span {
+.works-des span,
+.member-des span {
   display: block;
   font-size: 14px;
   line-height: 24px;
 }
-.works-des .company-name {
+.works-des .company-name,
+.member-des .member-name {
   font-size: 16px;
   line-height: 40px;
 }
 .b-b {
   border-bottom: 1px solid #888888;
 }
-.works-list ul li.hover .works-img span {
-  -webkit-transform: translateY(101%);
-  -moz-transform: translateY(101%);
-  -o-transform: translateY(101%);
-  -ms-transform: translateY(101%);
-  transform: translateY(101%);
+.works-img.hover span {
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -o-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
 }
 .pagination ul li {
   display: inline-block;
@@ -649,12 +657,13 @@ img {
 .tab-content.active {
   display: block;
 }
-.fs-title {
-  margin-top: 2.08333333rem;
+.tab-content {
+  margin-top: 2rem;
 }
 .fs-title h3 {
   display: inline-block;
   font-size: 1.25rem;
+  font-weight: 400;
   line-height: 1.25rem;
   padding-bottom: 1.25rem;
   border-bottom: 2px solid #888;
@@ -684,4 +693,103 @@ img {
   padding-right: 3%;
   font-size: 0.66666667rem;
 }
+.fs-team-list li {
+  width: 23%;
+  float: left;
+  margin-right: 2%;
+  margin-bottom: 1.66666667rem;
+}
+.member-name .member-position {
+  float: right;
+  line-height: 40px;
+}
+.fs-team-img {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.fs-team-img.hover {
+  -webkit-filter: none;
+  -moz-filter: none;
+  -ms-filter: none;
+  -o-filter: none;
+  filter: none;
+}
+.fs-partner li {
+  float: left;
+  width: 19%;
+  margin-right: 1%;
+  margin-top: 1%;
+}
 /*end*/
+/*observed*/
+.pdf-box {
+  width: 100%;
+  background: #c8c9ca;
+  padding: 2rem 0;
+  margin: 2.5rem 0 1.66666667rem;
+}
+.pdf-img {
+  float: left;
+  width: 50%;
+  padding: 0 4.16666667rem;
+}
+.pdf-des {
+  float: left;
+  width: 50%;
+}
+.pdf-des .pdf-name {
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+}
+.pdf-des .btn-group {
+  margin-top: 7.08333333rem;
+}
+.pt80 {
+  padding-top: 3.33333333rem;
+}
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  background: #9e9e9f;
+  font-size: 18px;
+  line-height: 50px;
+  width: 240px;
+  text-align: center;
+}
+.pdfobject-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+.pdfobject {
+  border: 1px solid #666;
+}
+/*end*/
+.pdf-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+.pdf-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}

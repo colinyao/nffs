@@ -1,12 +1,21 @@
 angular.module('myApp.comDirective', []).
-directive('pagDt', function() {
+directive('script', function() {
 	return {
-		restrict: 'A',
-		link: function(scope, ele, attr) {
-			ele.on('click', function() {
-				//获取页码
-
-			})
+		restrict: 'E',
+		link: function(scope, elem, attr) {
+			if (attr.type == 'text/javascript-lazy') {
+				var s = document.createElement('script');
+				s.type = 'text/javascript';
+				var src = elem.attr('src');
+				if (src != undefined) {
+					s.src = src;
+				} else {
+					var code = elem.text()
+					s.text = code;
+				}
+				document.head.appendChild(s);
+				elem.remove();
+			}
 		}
 	}
 })

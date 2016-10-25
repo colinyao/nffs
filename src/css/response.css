@@ -10,6 +10,12 @@
   .headline img {
     width: 350px;
   }
+  .pt80 {
+    padding-top: 1.66666667rem;
+  }
+  .pdf-des .btn-group {
+    margin-top: 3.5rem;
+  }
 }
 @media screen and (max-width: 992px) {
   html {
@@ -70,6 +76,12 @@
   .navbar-brand {
     width: 200px;
   }
+  .pt80 {
+    padding-top: 0.83333333rem;
+  }
+  .pdf-des .btn-group {
+    margin-top: 1.5rem;
+  }
 }
 @media screen and (max-width: 768px) {
   html {
@@ -122,6 +134,29 @@
     float: none;
     margin-left: 0;
   }
+  .fs-culture-content {
+    margin-left: 0;
+  }
+  .fs-team-list li {
+    width: 48%;
+  }
+  .fs-partner li {
+    float: left;
+    width: 32.3%;
+    margin-right: 1%;
+    margin-top: 1%;
+  }
+  .pdf-img {
+    padding: 0 3rem;
+  }
+  .pdf-des .pdf-name {
+    font-size: 2rem;
+  }
+  .btn {
+    font-size: 16px;
+    line-height: 30px;
+    width: 180px;
+  }
 }
 @media screen and (max-width: 480px) {
   html {
@@ -129,5 +164,16 @@
   }
   .headline img {
     width: 150px;
+  }
+  .btn {
+    font-size: 14px;
+    line-height: 30px;
+    width: 120px;
+  }
+  .pdf-des .btn-group {
+    margin-top: 1rem;
+  }
+  .pt80 {
+    padding: 0;
   }
 }

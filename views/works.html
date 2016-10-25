@@ -3,8 +3,8 @@
     <div class="headline"><img src="../src/images/works-head.png"></div>
     <div class="works-list mt90">
         <ul class="clearfix">
-            <li ng-repeat="work in works.list track by $index" active-hover>
-                <a class="works-img" work-show>
+            <li ng-repeat="work in works.list track by $index">
+                <a class="works-img" work-show active-hover>
                     <img src="{{work.imgUrl}}" />
                     <span></span>
                 </a>

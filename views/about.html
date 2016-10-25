@@ -1,17 +1,63 @@
-<div id="banner_tabs" class="flexslider">
-    <ul class="slides">
-        <li ng-repeat="item in banners track by $index"><a><img alt=""  src="{{item.imgUrl}}"></a></li>
-    </ul>
-    <ul class="flex-direction-nav">
-        <li><a class="flex-prev" href="javascript:;">Previous</a></li>
-        <li><a class="flex-next" href="javascript:;">Next</a></li>
-    </ul>
-    <ol id="bannerCtrl" class="flex-control-nav flex-control-paging">
-        <li ng-repeat="item in banners track by $index" banner-init><a>{{$index}}</a></li>
-    </ol>
-</div>
-<div class="about-container">
-    <div class="about-content">
-        <div class="filter-item mb30" ng-repeat="item in filters track by $index" active-hover><img src={{item.imgUrl}}><img class="filter" src="../src/images/filter{{$index+1}}.png"><img class="filter-des" src="../src/images/filter-des{{$index+1}}.png" alt="introduction"></div>
+<div class="content mt300">
+    <div class="headline"><img src="../src/images/about-head.png"></div>
+    <div class="tab-menu">
+    	<ul class="clearfix">
+            <li ng-class="{active:tabIndex==1}" ng-click="tab(1)"><span>风尚介绍</span></li>
+            <li ng-class="{active:tabIndex==2}" class="tc" ng-click="tab(2)"><span>风尚团队</span></li>
+            <li ng-class="{active:tabIndex==3}" class="tc" ng-click="tab(3)"><span>合作伙伴</span></li>
+            <li ng-class="{active:tabIndex==4}" class="tr" ng-click="tab(4)"><span>人才招聘</span></li>
+        </ul>
+    </div>
+    <div class="tab-content" ng-class="{active:tabIndex==1}">
+        <p>{{details}}</p>
+        <div class="fs-culture">
+        	<div class="fs-title"><h3>风尚文化</h3></div>
+        	<div class="fs-culture-content clearfix">
+        	<dl class="fs-culture-item">
+        		<dt>我们的价值观</dt>
+        		<dd></dd>
+        	</dl>
+        	<dl class="fs-culture-item">
+         		<dt>我们的愿景</dt>
+        		<dd></dd>       		
+        	</dl>
+        	<dl class="fs-culture-item">
+        		<dt>我们的使命</dt>
+        		<dd></dd>        		
+        	</dl>
+        	</div>
+        </div>
+        <div class="fs-prod clearfix">
+        		<div class="fs-title"><h3>风尚荣誉</h3></div>
+        		<div class="fs-prod-item">
+        		华润怡宝“百所图书馆”计划由INTERBRAND(全球最大的综合型品牌咨询公司)、
+21世纪经济报道评选为“中国最佳品牌建设案例”
+
+        	</div>
+        	     <div class="fs-prod-item">
+        		深圳西岸”城市营销获评“南方都市报系年度最佳创新案例”、“南方都市报十在营销事件提名奖”
+
+        	</div>
+        </div>
+    </div>
+    <div class="tab-content" ng-class="{active:tabIndex==2}">
+       <ul class="fs-team-list clearfix">
+       	   <li ng-repeat='item in members'>
+       	   <div class="fs-team-img" active-hover><img src="{{item.imgUrl}}" alt="" /><span></span></div>          
+       	   <p class="member-des">
+                    <span class="b-b member-name">{{item.name}}<span class="member-position">{{item.position}}</span></span>
+                    <span>{{item.motto}}</span>
+                </p>
+            </li>
+       </ul>
+    </div>
+    <div class="tab-content" ng-class="{active:tabIndex==3}">
+        <ul class="fs-partner clearfix">
+        	<li ng-repeat="item in partners">
+        		<img src="{{item.imgUrl}}"/>
+        	</li>
+        </ul>
+    </div>
+    <div class="tab-content" ng-class="{active:tabIndex==4}">
     </div>
 </div>

@@ -9,7 +9,6 @@
            loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
              // you can lazy load files for an existing module
              return $ocLazyLoad.load([
-               'src/js/lib/slider.js',
                'src/js/controllers/aboutCtrl.js'
              ]).then(function() {
                // inject the lazy loaded service
@@ -53,15 +52,16 @@
            }]
          }
        })
-       .state('atmaster', {
-         url: '/atmaster',
-         templateUrl: '/views/atmaster.html',
-         controller: 'atmasterCtrl',
+       .state('home', {
+         url: '/home',
+         templateUrl: '/views/home.html',
+         controller: 'homeCtrl',
          resolve: {
            loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
              // you can lazy load files for an existing module
              return $ocLazyLoad.load([
-               'src/js/controllers/atmasterCtrl.js'
+               'src/js/lib/slider.js',
+               'src/js/controllers/homeCtrl.js'
              ]).then(function() {
                // inject the lazy loaded service
 
@@ -69,10 +69,37 @@
 
            }]
          }
+       }).
+     state('pdf', {
+         url: '/viewer',
+         templateUrl: '/views/pdf.html',
+         controller: 'pdfCtrl',
+         resolve: {
+           loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+             return $ocLazyLoad.load([
+               'src/js/lib/pdfCtrl.js'
+             ]).then(function() {
+
+             })
+           }]
+         }
        })
        .state('observed', {
          url: '/observed',
          templateUrl: '/views/observed.html',
+         controller: 'observedCtrl',
+         resolve: {
+           loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+             // you can lazy load files for an existing module
+             return $ocLazyLoad.load([
+               'src/js/controllers/observedCtrl.js',
+               'src/js/lib/pdfobject.min.js'
+             ]).then(function() {
+               // inject the lazy loaded service
+
+             });
+           }]
+         }
        })
        .state('contact', {
          url: '/contact',
