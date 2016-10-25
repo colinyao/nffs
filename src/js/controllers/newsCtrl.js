@@ -33,7 +33,6 @@ angular.module('myApp.newsCtrl', [])
 		}];
 		$scope.newsData = $scope.newsList[0].content;
 		ww = document.body.clientWidth;
-		$scope.isM = ww < 768 ? true : false;
 		$scope.$on('isM', function(event, data) {
 			$scope.isM = data;
 		})

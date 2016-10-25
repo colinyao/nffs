@@ -56,6 +56,9 @@ directive('windowResize', function() {
 		restrict: 'A',
 		link: function(scope, ele, attr) {
 			var ww, wh;
+			window.onload=function(){
+				isM()
+			}
 			window.onresize = function() {
 				isM();
 				scope.$broadcast('isResize', {

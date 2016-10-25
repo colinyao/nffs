@@ -9,6 +9,8 @@ var minifyCSS = require('gulp-minify-css');
 var pngquant = require('imagemin-pngquant');
 var plumber = require('gulp-plumber');
 var connect = require('gulp-connect');
+var rev = require('gulp-rev');                                  //- 对文件名加MD5后缀
+var revCollector = require('gulp-rev-collector');               //- 路径替换
 
 gulp.task('less', function() {
     return gulp.src('./src/less/*.less')
@@ -29,6 +31,15 @@ gulp.task('css', function() {
         //.pipe(minifyCSS())
         .pipe(gulp.dest('./lib/src/css'))
 })
+gulp.task('contactCss',function(){
+    return gulp.src('./src/css/*.css')    //- 需要处理的css文件，放到一个字符串数组里
+        .pipe(concat('base.min.css'))                            //- 合并后的文件名
+        .pipe(minifyCss())                                      //- 压缩处理成一行
+        .pipe(rev())                                            //- 文件名加MD5后缀
+        .pipe(gulp.dest('./src/css'))                               //- 输出文件本地
+        .pipe(rev.manifest())                                   //- 生成一个rev-manifest.json
+        .pipe(gulp.dest('./rev')); 
+})
 gulp.task('img', function() {
     return gulp.src('./src/images/*')
         .pipe(imagemin({
@@ -41,9 +52,9 @@ gulp.task('img', function() {
         .pipe(gulp.dest('./lib/src/images'))
 })
 gulp.task('default', function() {
-    gulp.run(['less', 'connect']);
+    gulp.run(['less', 'concatCss','connect']);
     gulp.watch('./src/less/*.less', ['less']);
-    //gulp.watch('./src/css/*.css',['css']);
+    gulp.watch('./src/css/*.css',['concatCss']);
     //gulp.watch('*.html',['html']);
     //gulp.watch('./src/js/*',['js']);
     //gulp.watch('./src/images/*',['img']);
