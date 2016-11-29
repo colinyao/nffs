@@ -1,5 +1,6 @@
 <div class="content mt300">
-    <div class="headline"><img src="../src/images/about-head.png"></div>
+
+  
     <div class="tab-menu">
     	<ul class="clearfix">
             <li ng-class="{active:tabIndex==1}" ng-click="tab(1)"><span>风尚介绍</span></li>
@@ -9,44 +10,36 @@
         </ul>
     </div>
     <div class="tab-content" ng-class="{active:tabIndex==1}">
-        <p>{{details}}</p>
-        <div class="fs-culture">
+        <p class="introduce_content item-b40">{{aboutInfo.about_info.introduce_content}}</p>
+        <div class="fs-culture item-b40">
         	<div class="fs-title"><h3>风尚文化</h3></div>
         	<div class="fs-culture-content clearfix">
         	<dl class="fs-culture-item">
         		<dt>我们的价值观</dt>
-        		<dd></dd>
+        		<dd><img ng-src="http://nffs.xulog.com/nffs/{{aboutInfo.about_info.values_src}}"/></dd>
         	</dl>
         	<dl class="fs-culture-item">
          		<dt>我们的愿景</dt>
-        		<dd></dd>       		
+        		<dd><img ng-src="http://nffs.xulog.com/nffs/{{aboutInfo.about_info.wishes_src}}"/></dd>       		
         	</dl>
         	<dl class="fs-culture-item">
         		<dt>我们的使命</dt>
-        		<dd></dd>        		
+        		<dd><img ng-src="http://nffs.xulog.com/nffs/{{aboutInfo.about_info.misson_src}}"/></dd>        		
         	</dl>
         	</div>
         </div>
-        <div class="fs-prod clearfix">
+        <div class="fs-prod item-b40 clearfix">
         		<div class="fs-title"><h3>风尚荣誉</h3></div>
-        		<div class="fs-prod-item">
-        		华润怡宝“百所图书馆”计划由INTERBRAND(全球最大的综合型品牌咨询公司)、
-21世纪经济报道评选为“中国最佳品牌建设案例”
-
-        	</div>
-        	     <div class="fs-prod-item">
-        		深圳西岸”城市营销获评“南方都市报系年度最佳创新案例”、“南方都市报十在营销事件提名奖”
-
-        	</div>
+        		<div class="fs-prod-item" ng-repeat="item in aboutInfo.about_honour"><div ng-bind-html="item.about_honour |trustHtml"></div></div>
         </div>
     </div>
     <div class="tab-content" ng-class="{active:tabIndex==2}">
        <ul class="fs-team-list clearfix">
-       	   <li ng-repeat='item in members'>
-       	   <div class="fs-team-img" active-hover><img src="{{item.imgUrl}}" alt="" /><span></span></div>          
+       	   <li ng-repeat='item in members' re-height>
+       	   <div class="fs-team-img" active-hover><img ng-src="{{item.member_color_src}}" alt="" /><span></span></div>          
        	   <p class="member-des">
-                    <span class="b-b member-name">{{item.name}}<span class="member-position">{{item.position}}</span></span>
-                    <span>{{item.motto}}</span>
+                    <span class="b-b member-name">{{item.member_name}}<span class="member-position">{{item.member_pos}}</span></span>
+                    <span>{{item.member_maxim}}</span>
                 </p>
             </li>
        </ul>
@@ -54,10 +47,16 @@
     <div class="tab-content" ng-class="{active:tabIndex==3}">
         <ul class="fs-partner clearfix">
         	<li ng-repeat="item in partners">
-        		<img src="{{item.imgUrl}}"/>
+        		<img ng-src="http://nffs.xulog.com/nffs/src/{{item.coo_logo_src}}"/>
         	</li>
         </ul>
     </div>
     <div class="tab-content" ng-class="{active:tabIndex==4}">
+       <p class="invite-des mb20">MAD MAN的一天，就是吃饭睡觉玩营销，就是一会儿抓头发一会儿狂笑幸福和痛苦指数都很高的一群人。公关和广告没边界的时代，网络和场景分不清的年头，南方风尚召募志同道合的伙伴和广告狂人！
+南方风尚汇聚传媒营销、公关传播领域资深人士，关注传媒资源和市场需求的整合与互动，顺应社交媒体营销的需求，开向数字整合传播的未来：</p>
+        <div class="invite-item" ng-repeat="item in invites">
+            <h3><span>{{item.pos_name}}</span></h3>
+            <p class="mt20" ng-bind-html="item.pos_condition | trustHtml"></p>
+        </div>
     </div>
 </div>

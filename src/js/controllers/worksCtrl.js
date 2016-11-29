@@ -1,51 +1,180 @@
 angular.module('myApp.worksCtrl', []).
-controller('worksCtrl', ['$scope', 'comService', function($scope, comService) {
-		$scope.works = {
-			maxIndex: '5',
-			list: [{
-				imgUrl: '../src/images/work-item.png',
-				companyName: '平安银行',
-				workDes: '品牌形象、数字营销',
-				workId: '0'
-			}, {
-				imgUrl: '../src/images/work-item.png',
-				companyName: '平安银行',
-				workDes: '品牌形象、数字营销',
-				workId: '1'
-			}, {
-				imgUrl: '../src/images/work-item.png',
-				companyName: '平安银行',
-				workDes: '品牌形象、数字营销',
-				workId: '2'
-			}, {
-				imgUrl: '../src/images/work-item.png',
-				companyName: '平安银行',
-				workDes: '品牌形象、数字营销',
-				workId: '3'
-			}]
+controller('worksCtrl', ['$scope', function($scope) {
+		$scope.workContent = [{
+			example_type: '2',
+			example_src: 'src/images/1.png',
+			example_name: '结算卡',
+			example_summary: '这是个好卡'
+		}, {
+			example_type: '1',
+			example_src: 'src/images/2.png',
+			example_name: '结算卡',
+			example_summary: '这是个好卡'
+		}, {
+			example_type: '1',
+			example_src: 'src/images/2.png',
+			example_name: '结算卡',
+			example_summary: '这是个好卡'
+		}, {
+			example_type: '1',
+			example_src: 'src/images/2.png',
+			example_name: '结算卡',
+			example_summary: '这是个好卡'
+		}, {
+			example_type: '1',
+			example_src: 'src/images/2.png',
+			example_name: '结算卡',
+			example_summary: '这是个好卡'
+		}, {
+			example_type: '1',
+			example_src: 'src/images/2.png',
+			example_name: '结算卡',
+			example_summary: '这是个好卡'
+		}, {
+			example_type: '1',
+			example_src: 'src/images/2.png',
+			example_name: '结算卡',
+			example_summary: '这是个好卡'
+		}, {
+			example_type: '1',
+			example_src: 'src/images/2.png',
+			example_name: '结算卡',
+			example_summary: '这是个好卡'
+		}, {
+			example_type: '1',
+			example_src: 'src/images/2.png',
+			example_name: '结算卡',
+			example_summary: '这是个好卡'
+		}, {
+			example_type: '1',
+			example_src: 'src/images/2.png',
+			example_name: '结算卡',
+			example_summary: '这是个好卡'
+		}, {
+			example_type: '2',
+			example_src: 'src/images/1.png',
+			example_name: '结算卡',
+			example_summary: '这是个好卡'
+		}, {
+			example_type: '2',
+			example_src: 'src/images/1.png',
+			example_name: '结算卡',
+			example_summary: '这是个好卡'
+		}, {
+			example_type: '2',
+			example_src: 'src/images/1.png',
+			example_name: '结算卡',
+			example_summary: '这是个好卡'
+		}, {
+			example_type: '1',
+			example_src: 'src/images/2.png',
+			example_name: '结算卡',
+			example_summary: '这是个好卡'
+		}, {
+			example_type: '1',
+			example_src: 'src/images/2.png',
+			example_name: '结算卡',
+			example_summary: '这是个好卡'
+		}, {
+			example_type: '1',
+			example_src: 'src/images/2.png',
+			example_name: '结算卡',
+			example_summary: '这是个好卡'
+		}];
+
+		var listData = {
+			index: 0,
+			num: 8,
+			maxIndex: Math.floor($scope.workContent.length / 8),
+			flag: true
 		}
-		$scope.currentIndex = 0;
-		$scope.openLoadMore = true;
+		var long = [0, 0, 0, 0];
+
+		$scope.works = $scope.workContent.slice(0, (listData.index + 1) * listData.num)
+		$scope.worksList0 = [];
+		$scope.worksList1 = [];
+		$scope.worksList2 = [];
+		$scope.worksList3 = [];
+		$scope.worksList4 = [];
+		updateListData($scope.works.slice(listData.index * listData.num, (listData.index + 1) * listData.num))
+
 		$scope.$on('isLoadMore', function(event, data) {
-			if (data == true && $scope.currentIndex < $scope.works.maxIndex && $scope.openLoadMore) {
-				$scope.openLoadMore = false;
-				comService.ajax({
-					url: "underfined",
-					data: {
-						pagination: ++$scope.currentIndex
-					},
-					success: function(data) {
-						$scope.works.list.contact(data);
-						$scope.openLoadMore = true;
-					}
-				})
+			if (data == true && listData.flag) {
+				console.log(listData.maxIndex)
+				if (listData.index < listData.maxIndex) {
+
+					listData.flag = false;
+					++listData.index;
+					$scope.$apply(function() {
+						$scope.works = $scope.workContent.slice(0, (listData.index + 1) * listData.num);
+						updateListData($scope.works.slice(listData.index * listData.num, (listData.index + 1) * listData.num))
+						listData.flag = true;
+					})
+				} else {
+					listData.flag = false;
+				}
 			}
 		})
-		$scope.isPopUp = false;
-		$scope.workData = '<img src="../src/images/workData.png"/>';
 
+
+
+		function updateListData(latestData) {
+
+			for (var i in latestData) {
+				var min = Math.min.apply(min, long);
+				var index = long.indexOf(min);
+				latestData[i].type = index;
+				$scope["worksList" + index].push(latestData[i])
+				long[index] = long[index] + Number(latestData[i].example_type)
+			}
+		}
+
+		$scope.isPopUp = false;
+		// $scope.workData = '';
+
+		$scope.mtyy = '';
+		$scope.zhyx = '';
+		$scope.zhcl = '';
+		$scope.tabIndex = 1;
+		$scope.tab = function(index) {
+			$scope.tabIndex = index
+			switch (index) {
+				case 2:
+					if ($scope.members == '' || $scope.members == null) {
+						// $http({
+						// 	method: 'get',
+						// 	url: 'http://nffs.xulog.com/nffs/api/about_team'
+						// }).success(function(data) {
+						// 	setTimeout(function() {
+						// 		$scope.$apply(function() {
+						// 			$scope.members = data;
+						// 		})
+						// 	})
+						// })
+					}
+					break;
+				case 3:
+					if ($scope.partners == '' || $scope.partners == null) {
+						// $http({
+						// 	method: 'get',
+						// 	url: 'http://nffs.xulog.com/nffs/api/about_coo'
+						// }).success(function(data) {
+						// 	setTimeout(function() {
+						// 		$scope.$apply(function() {
+						// 			$scope.partners = data;
+
+						// 		})
+						// 	})
+						// })
+					}
+					break;
+
+				default:
+					break;
+			}
+		}
 	}])
-	.directive('workShow', ['comService', function(comService) {
+	.directive('workShow', ['$http', function($http) {
 		return {
 			restrict: 'AE',
 			scope: 'false',
@@ -54,15 +183,25 @@ controller('worksCtrl', ['$scope', 'comService', function($scope, comService) {
 				ele.on('click', function() {
 					angular.element(document.body).css('overflow', 'hidden')
 						//$('body').css('overflow', 'hidden')
-					scope.$apply(function() {
-							scope.$parent.isPopUp = true; //ng-repeat生成的元素scope为子scope
+					$http({
+						method: 'get',
+						url: '/nffs/api/work_detail/' + scope.work.example_id
+					}).success(function(data) {
+						setTimeout(function() {
+							scope.$apply(function() {
+								scope.$parent.workData = data.example_content;
+								scope.$parent.isPopUp = true; //ng-repeat生成的元素scope为子scope
+							})
 						})
-						// comService.ajax({
-						// 	url: 'undefined',
-						// 	data: {
-						// 		workId: scope.work.workId
-						// 	},
-						// 	success: function(data) {
+
+					})
+
+					// comService.ajax({
+					// 	url: 'undefined',
+					// 	data: {
+					// 		workId: scope.work.workId
+					// 	},
+					// 	success: function(data) {
 
 					// 		scope.$apply(function() {
 					// 			scope.$parent.workData = data;
@@ -76,19 +215,3 @@ controller('worksCtrl', ['$scope', 'comService', function($scope, comService) {
 			}
 		}
 	}])
-	.directive('workModal', function() {
-		return {
-			restrict: 'AE',
-			scope: 'false',
-			replace: 'true',
-			template: "<div class='work-modal' ng-class={'active':isPopUp}><div class='bg'></div><div class='modal-container'><div class='close-panel'><div class='close' ng-click='modalClose()'></div></div><div  class='modal-content' ng-bind-html='workData | trustHtml'></div></div></div>",
-			link: function(scope, ele, attr) {
-				// scope.isPopUp = isPopUp.getter().isPopUp
-				scope.modalClose = function() {
-					scope.isPopUp = false;
-					angular.element(document.body).css('overflow', 'auto')
-				};
-
-			}
-		}
-	})

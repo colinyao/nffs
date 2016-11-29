@@ -1,55 +1,52 @@
 angular.module('myApp.newsCtrl', [])
-	.controller('newsCtrl', ['$scope', function($scope) {
-		$scope.newsList = [{
-			title: '这是新闻标题这是新闻标题这是新闻标题这是新闻标题',
-			time: '2016-10-1 10:12:18',
-			des: '这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述',
-			content: '<p>这是内容一</p>'
-		}, {
-			title: '这是新闻标题',
-			des: '这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述',
-			time: '2016-10-1 10:12:18',
-			content: '<p>这是内容二</p>'
-		}, {
-			title: '这是新闻标题',
-			des: '这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述',
-			time: '2016-10-1 10:12:18',
-			content: '<p>这是内容二</p>'
-		}, {
-			title: '这是新闻标题',
-			des: '这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述',
-			time: '2016-10-1 10:12:18',
-			content: '<p>这是内容二</p>'
-		}, {
-			title: '这是新闻标题',
-			des: '这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述',
-			time: '2016-10-1 10:12:18',
-			content: '<p>这是内容二</p>'
-		}, {
-			title: '这是新闻标题',
-			des: '这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述，这是一段描述',
-			time: '2016-10-1 10:12:18',
-			content: '<p>这是内容二</p>'
-		}];
-		$scope.newsData = $scope.newsList[0].content;
-		ww = document.body.clientWidth;
+	.controller('newsCtrl', ['$scope', 'newsData', function($scope, newsData) {
+		var listData = {
+			index: 0,
+			num: 6,
+			maxIndex: Math.floor(newsData.data.length / 6),
+			flag: true
+		}
+		$scope.newsList = newsData.data.slice(0, listData.num);
+		$scope.newsContent = $scope.newsList[0].news_content;
+
 		$scope.$on('isM', function(event, data) {
 			$scope.isM = data;
+		})
+		$scope.$emit('to-parent-isM', true); //初始化时，$on isM加载在broadcast之前，导致$on不执行,先发送一条指令给父级，然后再调用broadcast
+		$scope.$on('isLoadMore', function(evet, data) {
+			if (data && $scope.isM) {
+				$scope.newsMore()
+			}
 		})
 		$scope.newsContainerClose = function() {
 			$('.close-panel').addClass('hidden')
 			$('.news-container').removeClass('active')
 			$(body).css('overflow', 'auto')
 		}
+		$scope.newsMore = function() {
+			if (listData.index < listData.maxIndex) {
+				if (listData.flag) {
+					listData.flag = false;
+					++listData.index;
+					$scope.$apply(function() {
+						$scope.newsList = newsData.data.slice(0, (listData.index + 1) * listData.num);
+						listData.flag = true;
+					})
+				}
+			} else {
+				$scope.newsMore = function() {
+					return false
+				};
+			}
+		}
 	}])
 	.directive('newsChange', function() {
 		return {
 			restrict: 'A',
 			link: function(scope, ele, attr) {
-
 				ele.on('click', function() {
 					scope.$apply(function() {
-						scope.$parent.newsData = scope.item.content;
+						scope.$parent.newsContent = scope.item.news_content;
 					})
 					if (scope.$parent.isM) {
 						$('.close-panel').removeClass('hidden')
@@ -61,7 +58,7 @@ angular.module('myApp.newsCtrl', [])
 			}
 		}
 	})
-	.directive('fixTop', function(comService) {
+	.directive('fixTop', function() {
 		return {
 			restrict: "A",
 			link: function(scope, ele, attr) {
@@ -73,13 +70,11 @@ angular.module('myApp.newsCtrl', [])
 						wh = window.innerHeight,
 						isfixed = false;
 
-					ww > 768 ? ele.css('height', wh + "px") : '';
-					scope.$on('isScroll', function(event, data) {
-						if (data && ww > 768) {
+					var handleScroll = function(data) {
+						if (data) {
 							var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 
 							if (scrollTop >= offsetTop) {
-
 								ele.css({
 									position: 'fixed',
 									top: '0',
@@ -98,46 +93,33 @@ angular.module('myApp.newsCtrl', [])
 							}
 							//加上上边框
 						}
+					}
+					handleScroll(true)
+					scope.$on('isScroll', function(event, data) {
+						handleScroll(data)
 					})
 					scope.$on('isResize', function(event, data) {
 						offsetTop = $('.news-container').offset().top;
-						eleWidth = ele[0].offsetWidth;
+						eleWidth = contentWidth * 0.3;
 						contentWidth = $('.content').width();
 						ww = data.ww;
 						wh = data.wh;
-						if (ww > 768 && isfixed) {
+						if (isfixed) {
+							console.log(contentWidth * 0.3)
 							ele.css({
-								width: '30%',
-								height: wh + "px",
+								width: eleWidth + "px",
 								right: (ww - contentWidth) / 2 + 'px'
 							})
-						} else if (ww > 768 && !isfixed) {
+						} else if (!isfixed) {
 							ele.css({
 								width: '30%',
-								height: wh + "px"
 							})
-						} else if (ww < 768) {
-
-							ele.css({
-								position: 'static',
-								top: '0',
-								right: '0',
-								width: '100%',
-								height: 'auto'
-							})
-
 						}
 					})
 
 					ele.on('scroll', function() {
-						if (wh + ele[0].scrollTop > $('.news-list ul').outerHeight(true)) {
-							comService.ajax({
-								url: "",
-								data: '',
-								success: function() {
-
-								}
-							})
+						if (490 + ele[0].scrollTop > $('.news-list ul').outerHeight(true) - 10) {
+							scope.newsMore()
 						}
 					})
 				}, 100)

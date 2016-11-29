@@ -1,23 +1,27 @@
-<div class="content mt300">
- <div class="headline"><img src="../src/images/observed-head.png"></div>
- <div class="pdf-container mt90">
- 	<div class="fs-title"><h3>《风尚观察》杂志</h3></div>
+<div class="tsort-menu">
+    <div class="item item-phone">0755-82299600</div>
+    <div class="item item-mail">企业邮箱</div>
+</div>
+<div class="content">
+ <div class="pdf-content">
  	<div class="pdf-box clearfix">
- 		<div class="pdf-img"><img src="../src/images/pdf.png" alt="" /></div>
+ 		<div class="pdf-img"><img ng-src="http://nffs.xulog.com/nffs/{{choosedPdf.imgUrl}}" alt="" /></div>
  		<div class="pdf-des">
- 			<p class="pdf-name  pt80">{{pdfName}}</p>
+ 			<p class="pdf-name  pt80">{{choosedPdf.pdfName}}</p>
  			<div class="btn-group"><a class="btn" ng-click="showPDF()">立即阅读</a><br/><a class="btn mt30">立即下载</a>
  			</div>
  		</div>
  	</div>
  	<div class="pdf-list">
- 		<ul>
- 			<li></li>
- 			<li></li>
- 			<li></li>
- 			<li></li>
- 			<li></li>
+ 		<ul class="clearfix">
+ 			<li ng-repeat="item in pdfs" choose-pdf><img ng-src="http://nffs.xulog.com/nffs/{{item.imgUrl}}" alt="" /></li>
+
  		</ul>
  	</div>
+ 	<div class="pagination mt30">
+ 	   <ul>
+ 	      <li ng-repeat="item in listData.pages()"  page-change>{{item}}</li>   
+ 	   </ul>
+    </div>
  </div>
 </div>

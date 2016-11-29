@@ -1,12 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="en">
+<html xmlns:ng="http://angularjs.org">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta CacheControl = "no-cache" >
-    <title>Document</title>
+    <title>南方风尚</title>
     <link rel="stylesheet" href="src/css/base.css" />
     <link rel="stylesheet" href="src/css/response.css"/>
     <!--[if lte IE 9]>
@@ -21,13 +21,14 @@
     <script src="src/js/controllers/navCtrl.js"></script>
     <script src="src/js/services/comService.js"></script>
     <script src="src/js/directive/comDirective.js"></script>
+    <script src="src/js/lib/rem.js"></script>
 </head>
 
 <body ng-app="myApp" id="body">
     <div class="wrapper"  nav-scroll window-resize>
-        <div ng-include="'/templates/header.html'"></div>
+        <div ng-include="'templates/header.html'"></div>
         <div ui-view=""></div>
-        <div ng-include="'/templates/footer.html'"></div>
+        <div ng-include="'templates/footer.html'"></div>
     </div>
         <script src="src/js/main.js"></script>
 </body>

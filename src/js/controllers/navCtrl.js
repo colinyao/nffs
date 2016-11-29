@@ -1,6 +1,10 @@
 angular.module('myApp.navCtrl', [])
 	.controller('navCtrl', ["$scope", function($scope) {
 		$scope.nav = [{
+			link: 'home',
+			eng: 'HOME',
+			chinese: "首页"
+		}, {
 			link: 'about',
 			eng: 'ABOUT',
 			chinese: "关于风尚"
@@ -29,6 +33,11 @@ angular.module('myApp.navCtrl', [])
 		$scope.collapse = function() {
 			$scope.isCollapse = !$scope.isCollapse;
 		}
+		$scope.$on('$stateChangeSuccess', function(event, data) {
+			if ($scope.isCollapse) {
+				$scope.isCollapse = false;
+			}
+		})
 	}]).
 directive('navScroll', function() {
 	return {
@@ -40,12 +49,8 @@ directive('navScroll', function() {
 				var wrapperHieght = $('.wrapper').outerHeight(true),
 					clientHeight = $(window).height(),
 					scrollTop = $(document).scrollTop();
-				scrollTop != 0 ? $('.navbar').css({
-						background: "rgba(247,247,247,0.7)"
-					}) : $('.navbar').css({
-						background: 'transparent'
-					}) //搞不定了，只能让jquery帮下忙了
-				scrollTop + clientHeight > wrapperHieght - 100 ? scope.$broadcast('isLoadMore', true) : scope.$broadcast('isLoadMore', false);
+				scrollTop > 10 ? $('.navbar').addClass('navbar-fixed-top') : $('.navbar').removeClass('navbar-fixed-top') //搞不定了，只能让jquery帮下忙了
+				scrollTop + clientHeight > wrapperHieght - 50 ? scope.$broadcast('isLoadMore', true) : scope.$broadcast('isLoadMore', false);
 			})
 
 		}
@@ -56,22 +61,11 @@ directive('windowResize', function() {
 		restrict: 'A',
 		link: function(scope, ele, attr) {
 			var ww, wh;
-			window.onload=function(){
-				isM()
-			}
 			window.onresize = function() {
-				isM();
 				scope.$broadcast('isResize', {
-					ww: ww,
-					wh: wh
+					ww: document.documentElement.clientWidth || document.body.clientWidth,
 				})
 
-			}
-
-			function isM() {
-				ww = window.document.body.clientWidth; //innerWidth包含了滚动条
-				wh = window.innerHeight;
-				ww < 768 ? scope.$broadcast('isM', true) : scope.$broadcast('isM', false);
 			}
 		}
 	}

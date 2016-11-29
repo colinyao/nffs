@@ -1,6 +1,12 @@
+<div class="tsort-menu">
+    <div class="item item-phone">0755-82299600</div>
+    <div class="item item-mail">企业邮箱</div>
+</div>
 <div id="banner_tabs" class="flexslider">
     <ul class="slides">
-        <li ng-repeat="item in banners track by $index"><a><img alt=""  src="{{item.imgUrl}}"></a></li>
+        <li ng-repeat="item in banners track by $index" ng-class="{pos:{{$index}}!=0}">
+            <a><img alt="" ng-src="http://nffs.xulog.com/nffs/{{item.img_src}}"></a>
+        </li>
     </ul>
     <ul class="flex-direction-nav">
         <li><a class="flex-prev" href="javascript:;">Previous</a></li>
@@ -11,7 +17,38 @@
     </ol>
 </div>
 <div class="about-container">
-    <div class="about-content">
-        <div class="filter-item mb30" ng-repeat="item in filters track by $index" active-hover><img src={{item.imgUrl}}><img class="filter" src="../src/images/filter{{$index+1}}.png"><img class="filter-des" src="../src/images/filter-des{{$index+1}}.png" alt="introduction"></div>
+
+        <div class="about-content clearfix">
+               <div class="filter-item mb30" ng-repeat="item in filters track by $index" active-hover>
+                  <div class="filter-box">
+                      <img ng-src="http://nffs.xulog.com/nffs/{{item.img_src}}">
+<!--                       <img class="filter" ng-src="http://nffs.xulog.com/nffs/src/images/filter{{$index+1}}.png">
+                      <img class="filter-des" ng-src="http://nffs.xulog.com/nffs/src/images/filter-des{{$index+1}}.png" alt="introduction"> -->
+                  </div>
+                  <div class="about-des">
+                      <h3>{{des[$index].title}}</h3>
+                      <p>{{des[$index].content}}</p>
+                  </div>
+               </div>
+
+        </div>
+        <div class="home-company-info mb30">
+            <div class="icon_title"><img src="/nffs/src/images/icon_contact.png" alt="" /></div>
+            <div class="home-contact-info clearfix">
+                <div class="contact-info-item w40">
+                    <p class="f16">ADD</p>
+                    <p class="mt20">深圳市南山区蛇口工业五路 5号万维大楼504#</p>
+                </div>
+                <div class="contact-info-item w25">
+                    <p class="f16">TEL</p>
+                    <p class="mt20">+86-755-88299601</p>
+                </div>
+                <div class="contact-info-item w25">
+                    <p class="f16">EMAIL</p>
+                    <p class="mt20">admin@southfashion.com.cn</p>
+                </div>
+
+            </div>
+
     </div>
 </div>

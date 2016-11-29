@@ -1,13 +1,16 @@
-<div class="content mt300">
- <div class="headline"><img src="../src/images/news-head.png"></div>
-      <div class="clearfix">
-    <div class='close-panel hidden'><div class='close' ng-click='newsContainerClose()'></div></div>
-	<div class="news-container" ng-bind-html="newsData | trustHtml">
-	</div>
-	<div class="news-list diy-scrollbar" fix-top>
-		<ul>
-            <li ng-repeat="item in newsList" news-change ><h3 class="news-list-title">{{item.title}}</h3><p class="news-list-time">{{item.time}}</p><p class="news-list-des">{{item.des}}</p></li>
-		</ul>
-	</div>
-	</div>
+<div class="tsort-menu">
+    <div class="item item-phone">0755-82299600</div>
+    <div class="item item-mail">企业邮箱</div>
+</div>
+<div class="content">
+    <div class="b-p clearfix">
+	    <div class='close-panel hidden'><div class='close' ng-click='newsContainerClose()'></div></div>
+		<div class="news-container" ng-bind-html="newsContent | trustHtml">
+		</div>
+		<div class="news-list diy-scrollbar" fix-top>
+			<ul>
+	            <li ng-repeat="item in newsList track by $index" news-change ><h3 class="news-list-title">{{item.news_title}}</h3><p class="news-list-time">{{item.addtime}}</p><p class="news-list-des">{{item.news_note}}</p></li>
+			</ul>
+		</div>
+   </div>
 </div>

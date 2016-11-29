@@ -68,7 +68,7 @@ gulp.task('default', function() {
 
 gulp.task('connect', function() {
     connect.server({ //创建livereload服务
-        root: '',
+        root: '../',
         port: 3000,
         livereload: true
     });
